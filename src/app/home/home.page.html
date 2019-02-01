@@ -1,12 +1,51 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      Ionic Blank
+    <ion-title *ngIf="ticket" class="title">
+      Ticket #{{ ticket.id }}
+      <ion-chip>
+        <ion-label>{{ ticket.status }}</ion-label>
+      </ion-chip>
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
+<ion-content padding *ngIf="ticket">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Requester</ion-card-title>
+      <ion-card-subtitle>
+        <ion-item>
+          <ion-avatar>
+            <img [src]="ticket.requester.avatarUrl" />
+          </ion-avatar>
+          <ion-label>
+            {{ ticket.requester.name }}
+          </ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-icon name="mail" slot="start"></ion-icon>
+          <ion-label>
+            {{ ticket.requester.email }}
+          </ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-icon name="people" slot="start"></ion-icon>
+          <ion-label>
+            {{
+              ticket.requester.organizations.length
+                ? ticket.requester.organizations.join(", ")
+                : "No organizations"
+            }}
+          </ion-label>
+        </ion-item>
+      </ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-textarea readonly rows="5" [value]="ticket.description">
+      </ion-textarea>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

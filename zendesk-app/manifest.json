@@ -1,0 +1,17 @@
+{
+  "name": "ZendeskTestIntegration",
+  "author": {
+    "name": "olehtest",
+    "email": "o.serhun@mobilunity.com",
+    "url": ""
+  },
+  "defaultLocale": "en",
+  "private": true,
+  "location": {
+    "support": {
+      "ticket_sidebar": "assets/build/index.html"
+    }
+  },
+  "version": "1.0",
+  "frameworkVersion": "2.0"
+}
